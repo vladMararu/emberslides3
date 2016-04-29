@@ -1,0 +1,13 @@
+{{#each slides as |slideItem|}}
+  <div class="slide-unit">
+    <span  class="id-slide" >{{slideItem.id}}</span>
+    <button class="image-slide" {{action (action onClickSlide) slideItem}}></button>
+    <button class="remove-button" {{action (action onClickRemove) slideItem}} >X</button>
+  </div>
+{{/each}}
+
+<div class="wraper-add-button">
+  <button class="add-button" onClick={{onClickAdd}}></button>
+</div>
+
+{{yield}}
