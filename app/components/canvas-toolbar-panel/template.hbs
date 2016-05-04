@@ -1,0 +1,14 @@
+<div class="add-element-button-div">
+  {{canvas-toolbar-add-element onClick = onAddText}}
+  {{canvas-toolbar-add-element onClick = onAddImg}}
+  {{canvas-toolbar-add-element onClick = onAddLine}}
+</div>
+<div class="text-align-button-div">
+  {{#each alignTextChilds as |element|}}
+    {{canvas-toolbar-align type=element.id onTextAlign=(action 'onTextAlign') selected= element.selected}}
+  {{/each}}
+</div>
+{{canvas-toolbar-color-picker onColorSelect = onColorSelect}}
+
+
+{{yield}}
