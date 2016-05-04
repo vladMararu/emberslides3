@@ -1,0 +1,6 @@
+{{yield}}
+{{#each layouts as |layout|}}
+  <button {{action "layoutClick" layout.shapes}}>
+      <img src={{layout.url}} />
+  </button>
+{{/each}}
