@@ -1,6 +1,5 @@
 {{yield}}
 {{#each layouts as |layout|}}
-  <button {{action "layoutClick" layout.shapes}}>
-      <img src={{layout.url}} />
-  </button>
+{{#image-button-component imgUrl=layout.url click =(action handleLayoutClick layout.shapes)}}
+{{/image-button-component}}
 {{/each}}

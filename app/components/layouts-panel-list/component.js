@@ -279,10 +279,4 @@ export default Ember.Component.extend({
     this._super(...arguments);
     this.layouts = bringLayouts;
   },
-  actions: {
-    layoutClick(shapes) {
-      this.sendAction('layoutClick', shapes);
-    },
-  },
-
 });
