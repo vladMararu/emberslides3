@@ -1,3 +1,15 @@
+{{#image-button-component}}
+{{/image-button-component}}
+{{#spectrum-color-panel-component}}
+{{/spectrum-color-panel-component}}
+{{canvas-toolbar-panel
+    onAddText = (action 'handleAddText')
+    onAddImg = (action 'handleAddImg')
+    onAddLine = (action 'handleAddLine')
+    onTextAlign =  (action 'handleTextAlign')
+    onColorSelect = (action 'handleColorSelect')
+}}
+
 {{slide-list-component
   slides=model
   onClickSlide = (action 'handleSlideSelect')
