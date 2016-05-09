@@ -1,0 +1,28 @@
+.add-element-button-div{
+  display: inline-block;
+  margin-right: 50px;
+}
+.text-align-button-div{
+  display: inline-block;
+  margin-right: 50px;
+}
+.toolbar-button {
+  display: inline-block;
+  vertical-align: middle;
+}
+.selected-align-button button{
+  color: orange;
+  border: 1px solid pink;
+}
+.selected-align-button button:focus{
+  outline: none;
+}
+.canvas-toolbar {
+  background-color: #EEE;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 5px 15px 5px 15px;
+  border: solid 1px grey;
+  font-size: 0;
+  border-radius: 5px;
+}
