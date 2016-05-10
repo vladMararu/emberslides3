@@ -17,5 +17,8 @@ export default Ember.Controller.extend({
     handleColorSelect(param) {
       console.log('controller' + param);
     },
+    handleSelectedLayout(param) {
+      console.log("layout selected : ", param);
+    }
   },
 });
