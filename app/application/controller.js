@@ -26,5 +26,8 @@ export default Ember.Controller.extend({
     handleSlideAdd() {
       console.log('add slide');
     },
+    handleSelectedLayout(param) {
+      console.log("layout selected : ", param);
+    }
   },
 });
