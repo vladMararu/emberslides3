@@ -1,0 +1,27 @@
+.canvas-slide-panel {
+  width: 25%;
+}
+.header-p {
+  display: inline-block;
+  padding: 5px;
+  border-bottom: 1px solid black;
+}
+.header-panel {
+  font-size: 18px;
+  margin:0px;
+}
+.header-panel > p:hover{
+  cursor: pointer;
+}
+.properties-panel > * {
+  display: inline-block;
+}
+
+.border-layouts {
+  border-bottom: 0px solid black;
+  border-right: 1px solid black;
+}
+.border-properties {
+  border-bottom: 0px solid black;
+  border-left: 1px solid black;
+}

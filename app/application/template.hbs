@@ -1,7 +1,3 @@
-{{#layouts-panel-list  handleLayoutClick = (action 'handleSelectedLayout')}}
-{{/layouts-panel-list}}
-{{#spectrum-color-panel-component}}
-{{/spectrum-color-panel-component}}
 {{canvas-toolbar-panel
     onAddText = (action 'handleAddText')
     onAddImg = (action 'handleAddImg')
@@ -9,3 +5,7 @@
     onTextAlign =  (action 'handleTextAlign')
     onColorSelect = (action 'handleColorSelect')
 }}
+{{#canvas-slide-panel-properties
+  handleLayoutClick =(action 'handleSelectedLayout')
+  selectColorPropery =(action 'handleColorPropery')}}
+{{/canvas-slide-panel-properties}}
