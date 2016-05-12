@@ -2,26 +2,23 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('slide-list-component', 'Integration | Component | slide list component', {
-  integration: true
+  integration: true,
 });
 
 test('it renders slide-list-component', function(assert) {
-  assert.expect(2);
+  assert.expect(1);
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{slide-list-component}}`);
+  this.set('handleSlideSelect', () => {});
+  this.set('handleSlideRemove', () => {});
+  this.set('handleSlideAdd', () => {});
+
+  this.render(hbs`{{slide-list-component onClickSlide = (action handleSlideSelect)
+                                         onClickRemove = (action handleSlideRemove)
+                                         onClickAdd = (action handleSlideAdd)}}`);
 
   assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#slide-list-component}}
-      template block text
-    {{/slide-list-component}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });
 
 test('it renders all slides', function(assert) {
@@ -33,12 +30,9 @@ test('it renders all slides', function(assert) {
     { id: 3 },
   ]);
 
-  this.set('handleSlideSelect', () => {
-  });
-  this.set('handleSlideRemove', () => {
-  });
-  this.set('handleSlideAdd', () => {
-  });
+  this.set('handleSlideSelect', () => {});
+  this.set('handleSlideRemove', () => {});
+  this.set('handleSlideAdd', () => {});
 
   this.render(hbs`{{slide-list-component
                     slides=testSlides
@@ -52,26 +46,27 @@ test('it renders all slides', function(assert) {
 test('it renders the add slide button', function(assert) {
   assert.expect(1);
 
-  this.render(hbs`{{slide-list-component}}`);
+  this.set('handleSlideSelect', () => {});
+  this.set('handleSlideRemove', () => {});
+  this.set('handleSlideAdd', () => {});
+  this.render(hbs`{{slide-list-component onClickSlide = (action handleSlideSelect)
+                                         onClickRemove = (action handleSlideRemove)
+                                         onClickAdd = (action handleSlideAdd)}}`);
 
-  assert.equal(this.$('.add-button').length, 1);
+  assert.equal(this.$('.image-button').length, 1);
 });
 
-test('it renders all the remove slide buttons', function(assert) {
+test('it renders first remove slide button and slide button', function(assert) {
   assert.expect(1);
 
   this.set('testSlides', [
     { id: 1 },
     { id: 2 },
-    { id: 3 },
   ]);
 
-  this.set('handleSlideSelect', () => {
-  });
-  this.set('handleSlideRemove', () => {
-  });
-  this.set('handleSlideAdd', () => {
-  });
+  this.set('handleSlideSelect', () => {});
+  this.set('handleSlideRemove', () => {});
+  this.set('handleSlideAdd', () => {});
 
   this.render(hbs`{{slide-list-component
                     slides=testSlides
@@ -79,7 +74,7 @@ test('it renders all the remove slide buttons', function(assert) {
                     onClickRemove = (action handleSlideRemove)
                     onClickAdd = (action handleSlideAdd) }}`);
 
-  assert.equal(this.$('.remove-button').length, 3);
+  assert.equal(this.$('.slide-list>:first-child button.image-button').length, 2);
 });
 
 test('should trigger external action on add slide', function(assert) {
@@ -91,10 +86,8 @@ test('should trigger external action on add slide', function(assert) {
     { id: 3 },
   ]);
 
-  this.set('handleSlideSelect', () => {
-  });
-  this.set('handleSlideRemove', () => {
-  });
+  this.set('handleSlideSelect', () => {});
+  this.set('handleSlideRemove', () => {});
   this.set('handleSlideAdd', () => {
     assert.ok(true);
   });
@@ -105,7 +98,7 @@ test('should trigger external action on add slide', function(assert) {
                     onClickRemove = (action handleSlideRemove)
                     onClickAdd = (action handleSlideAdd) }}`);
 
-  this.$('.add-button').click();
+  this.$('.wraper-add-button .image-button').click();
 });
 
 test('should trigger external action on remove slide', function(assert) {
@@ -113,17 +106,13 @@ test('should trigger external action on remove slide', function(assert) {
 
   this.set('testSlides', [
     { id: 1 },
-    { id: 2 },
-    { id: 3 },
   ]);
 
-  this.set('handleSlideSelect', () => {
-  });
+  this.set('handleSlideSelect', () => {});
   this.set('handleSlideRemove', () => {
     assert.ok(true);
   });
-  this.set('handleSlideAdd', () => {
-  });
+  this.set('handleSlideAdd', () => {});
 
   this.render(hbs`{{slide-list-component
                     slides=testSlides
@@ -131,7 +120,7 @@ test('should trigger external action on remove slide', function(assert) {
                     onClickRemove = (action handleSlideRemove)
                     onClickAdd = (action handleSlideAdd) }}`);
 
-  this.$('.slide-list>:first-child button.remove-button').click();
+  this.$('.slide-unit > button.image-button:last-of-type ').click();
 });
 
 test('should trigger external action on select slide', function(assert) {
@@ -139,17 +128,13 @@ test('should trigger external action on select slide', function(assert) {
 
   this.set('testSlides', [
     { id: 1 },
-    { id: 2 },
-    { id: 3 },
   ]);
 
   this.set('handleSlideSelect', () => {
     assert.ok(true);
   });
-  this.set('handleSlideRemove', () => {
-  });
-  this.set('handleSlideAdd', () => {
-  });
+  this.set('handleSlideRemove', () => {});
+  this.set('handleSlideAdd', () => {});
 
   this.render(hbs`{{slide-list-component
                     slides=testSlides
@@ -157,5 +142,5 @@ test('should trigger external action on select slide', function(assert) {
                     onClickRemove = (action handleSlideRemove)
                     onClickAdd = (action handleSlideAdd) }}`);
 
-  this.$('.slide-list>:first-child button.image-slide').click();
+  this.$('.slide-unit > button.image-button:first-of-type').click();
 });

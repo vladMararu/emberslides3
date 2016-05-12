@@ -19,6 +19,7 @@ export default Ember.Controller.extend({
     },
     handleSlideSelect(model) {
       console.log('select slide ', model);
+      this.transitionToRoute('slides.slide_id', model);
     },
     handleSlideRemove(model) {
       console.log('remove slide ', model);
