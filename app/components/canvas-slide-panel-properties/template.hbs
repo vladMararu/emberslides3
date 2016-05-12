@@ -1,0 +1,21 @@
+{{yield}}
+<div class="header-panel">
+  <p {{action 'changePanel' 'layouts'}} class="header-p {{if isPanelActive 'border-layouts'}}">
+    Layouts
+  </p>
+  <p {{action 'changePanel' 'properties'}} class="header-p {{unless isPanelActive 'border-properties'}}">
+    Properties
+  </p>
+</div>
+{{#if isPanelActive}}
+{{#layouts-panel-list  handleLayoutClick = handleLayoutClick}}
+{{/layouts-panel-list}}
+{{else}}
+<div class="properties-panel">
+  <p>
+    Background :
+  </p>
+  {{#spectrum-color-panel-component onChange = selectColorPropery}}
+  {{/spectrum-color-panel-component}}
+</div>
+{{/if}}
