@@ -1,13 +1,16 @@
-{{#each slides as |slideItem|}}
-  <div class="slide-unit">
-    <span  class="id-slide" >{{slideItem.id}}</span>
-    {{image-button-component imgUrl = '../assets/slide/slide.png' click =(action onClickSlide slideItem)}}
-    {{image-button-component imgUrl = '../assets/slide/remove.png' click =(action onClickRemove slideItem)}}
-  </div>
-{{/each}}
+{{#ember-dragula config=dragulaconfig drag=(action 'onDrag') drop=(action 'onDrop') }}
+  {{#ember-dragula-container}}
+  {{#each slides as |slideItem index| }}
+    <div class="slide-unit">
+      <span  class="id-slide" >{{plus-one index}}</span>
+      {{image-button-component imgUrl = '../assets/slide/slide.png' click =(action onClickSlide slideItem)}}
+      {{image-button-component imgUrl = '../assets/slide/remove.png' click =(action 'onClickRemove' slideItem)}}
+    </div>
+  {{/each}}
 
+{{/ember-dragula-container }}
+{{/ember-dragula}}
 <div class="wraper-add-button">
-  {{image-button-component imgUrl = '../assets/slide/add.png' click =(action onClickAdd)}}
+  {{image-button-component imgUrl = '../assets/slide/add.png' click=(action 'addEmptySlide')}}
 </div>
-
 {{yield}}
