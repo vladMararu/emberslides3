@@ -8,8 +8,7 @@
 
 {{slide-list-component
   slides=model
-  onClickSlide = (action 'handleSlideSelect')
-  onClickAdd = (action 'handleSlideAdd')}}
+  handleSlideClick = (action 'handleSelectedSlide')}}
 
 {{#canvas-slide-panel-properties
   handleLayoutClick =(action 'handleSelectedLayout')
