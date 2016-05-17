@@ -23,5 +23,11 @@ export default Ember.Controller.extend({
     handleColorPropery(color) {
       console.log("color property : ", color);
     },
+    handleSelectedSlide(param) {
+      console.log("handle selected slide: ", param);
+    },
+    handleRemoveSlide() {
+      console.log('APEL CONTROLLER');
+    },
   },
 });

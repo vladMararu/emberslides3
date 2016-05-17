@@ -1,0 +1,19 @@
+.slide-unit:hover{
+  border: 1px solid;
+}
+.slide-unit > * {
+  display: block;
+}
+.slide-selected{
+  border: 1px solid red;
+  padding: 10px;
+}
+.remove-button{
+  background-color: white;
+  border: none;
+  outline:none;
+}
+.slide-selected{
+   border: 1px solid red;
+ 	padding: 10px;
+ }
